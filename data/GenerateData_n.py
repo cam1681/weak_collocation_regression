@@ -65,6 +65,8 @@ class DataSet(object):
             data[i + 1, :, :] = data[i + 1, :, :] + self.diffusion_term.repeat(self.samples_num, 1) * torch.sqrt(self.t_diff[i]) * torch.randn(self.samples_num, self.dim)
             if self.explosion_prevention:
                 data[i + 1, :, :][data[i + 1, :, :] < 0] = 0
+            if 10 * i % (self.shape_t - 1) == 0:
+                print("Generate data %s%% finished..." % (100 * i // (self.shape_t - 1)))
         if plot_hist:
             for i in range(self.dim):
                 plt.figure()

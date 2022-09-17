@@ -16,7 +16,7 @@ import utils
 
 class DataSet(object):
     def __init__(self, time_instants, dt, samples_num, dim, drift_term, diffusion_term,
-                 initialization, explosion_prevention=False):
+                 initialization, drift_independence=True, explosion_prevention=False):
         self.time_instants = time_instants
         self.dt = dt
         self.samples_num = samples_num
@@ -24,6 +24,7 @@ class DataSet(object):
         self.drift_term = drift_term
         self.diffusion_term = diffusion_term
         self.initialization = initialization
+        self.drift_independence = drift_independence
         self.explosion_prevention = explosion_prevention
 
         self.explosion_prevention_N = 0
@@ -35,6 +36,13 @@ class DataSet(object):
                 y[:, i] = y[:, i] + self.drift_term[i, j] * x[:, i] ** j
         return y
 
+    def GAN2d(self, x):
+        def fun(x, a):
+            y = x + a
+            z = (y[:, 0] * y[:, 1]) ** 2
+            return z.unsqueeze(1).repeat(1, 2) / y
+        return -2 * (fun(x, 1) + fun(x, -0.5))
+
     def subSDE(self, t0, t1, x):
         if t0 == t1:
             return x
@@ -42,7 +50,11 @@ class DataSet(object):
             t = torch.arange(t0, t1 + self.dt, self.dt)
             y = x
             for i in range(t.shape[0] - 1):
-                y = y + self.drift(y) * self.dt + torch.sqrt(torch.tensor(self.dt)) * \
+                if self.drift_independence:
+                    y = y + self.drift(y) * self.dt
+                elif self.drift_term.shape == torch.Size([2, 10]):
+                    y = y + self.GAN2d(y) * self.dt
+                y = y + torch.sqrt(torch.tensor(self.dt)) * \
                     torch.mm(torch.randn(self.samples_num, self.dim), torch.diag(self.diffusion_term))
                 if self.explosion_prevention:
                     if any(y < 0):

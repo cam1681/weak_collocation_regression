@@ -72,7 +72,7 @@ class DataSet(object):
 
 if __name__ == '__main__':
     drift = torch.tensor([0, 1, 0, -1])
-    diffusion = torch.tensor([1])
+    diffusion = torch.tensor([1, 1, 0, 0])
     dataset = DataSet(torch.tensor([0, 1, 2, 5, 8, 9, 10]), dt=0.001, samples_num=2000, dim=1,
                       drift_term=drift, diffusion_term=diffusion, initialization=torch.rand(2000, 1) + 1,
                       explosion_prevention=False)
