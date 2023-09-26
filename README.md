@@ -11,9 +11,13 @@ For more information, please refer to the [paper](https://arxiv.org/abs/2209.026
 # Data acquisition
 
 All the raw data used in this work for the experiments of revealing the hidden dynamics are obtained by integrating the given SDEs
+
 $$d {X}_{t}=\boldsymbol{\mu}_{t} d t+ \bf{\sigma}_{t} d W_{t}, \quad t \geq 0$$
+
 from $t=0$ to $t=T$ with Euler–Maruyama scheme
+
 $$\tilde{{X}}_{(i+1) \delta t} =\tilde{{X}}_{i \delta t}+\boldsymbol{\mu}_{t} \delta t+\boldsymbol{\sigma}_{t} \sqrt{\delta t} \bf{\mathcal{N}}_{i}.$$
+
 The files in the "data" folder are used to generate artificial observational data.
 
 - GenerateData_n.py: n-dimensional data with equally spaced time intervals.
