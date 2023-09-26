@@ -14,11 +14,9 @@ All the raw data used in this work for the experiments of revealing the hidden d
 
 $$ dX_t=\mu_t dt+ \sigma_t dW_t, \quad t \geq 0 $$
 
-$$ d {X}_{t}=\boldsymbol{\mu}_{t} d t+ \bf{\sigma}_{t} d W_{t}, \quad t \geq 0 $$
-
 from $t=0$ to $t=T$ with Euler–Maruyama scheme
 
-$$ \tilde{{X}}_{(i+1) \delta t} =\tilde{{X}}_{i \delta t}+\boldsymbol{\mu}_{t} \delta t+\boldsymbol{\sigma}_{t} \sqrt{\delta t} \bf{\mathcal{N}}_{i}. $$
+$$ \tilde{X}_{(i+1) \delta t} =\tilde{X}_{i \delta t}+\mu_t \delta t+\sigma_t \sqrt{\delta t} \mathcal{N}_i. $$
 
 The files in the "data" folder are used to generate artificial observational data.
 
