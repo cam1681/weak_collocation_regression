@@ -12,6 +12,8 @@ For more information, please refer to the [paper](https://arxiv.org/abs/2209.026
 
 All the raw data used in this work for the experiments of revealing the hidden dynamics are obtained by integrating the given SDEs
 
+$$ dX_t=\mu_t dt+ \sigma_t dW_t, \quad t \geq 0 $$
+
 $$ d {X}_{t}=\boldsymbol{\mu}_{t} d t+ \bf{\sigma}_{t} d W_{t}, \quad t \geq 0 $$
 
 from $t=0$ to $t=T$ with Euler–Maruyama scheme
