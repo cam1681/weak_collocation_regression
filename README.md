@@ -30,10 +30,13 @@ The files in the "data" folder are used to generate artificial observational dat
 # Citation
 
 ```
-@article{lu2022weak,
+@article{lu2024weak,
   title={Weak Collocation Regression method: fast reveal hidden stochastic dynamics from high-dimensional aggregate data},
   author={Lu, Liwei and Zeng, Zhijun and Jiang, Yan and Zhu, Yi and Hu, Pipi},
-  journal={arXiv preprint arXiv:2209.02628},
-  year={2022}
+  journal={Journal of Computational Physics},
+  volume={502},
+  pages={112799},
+  year={2024},
+  publisher={Elsevier}
 }
 ```
